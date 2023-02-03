@@ -1,0 +1,91 @@
+---
+title: "shortRNA"
+output: 
+  xaringan::moon_reader:
+    seal: false
+    libs: libs
+    css: ["css/xaringan.css", "default", "default-fonts"]
+    nature:
+      ratio: '16:9'
+      beforeInit: ["addons/macros.js", "https://platform.twitter.com/widgets.js"]
+      highlightLines: true
+      highlightSpans: false
+      highlightStyle: github
+      countIncrementalSlides: false
+      countdown: false
+      slideNumberFormat: '%current%'
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+class: inverse, middle, center
+
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(knitr.duplicate.label = "allow")
+options(htmltools.dir.version = FALSE, htmltools.preserve.raw = FALSE)
+```
+
+```{r xaringan-tile-view, echo=FALSE, warning=FALSE, message=FALSE}
+xaringanExtra::use_tile_view()
+xaringanExtra::use_animate_css()
+xaringanExtra::use_panelset()
+xaringanExtra::use_tachyons()
+# xaringanExtra::style_panelset(panel_tab_color_active = "red")
+xaringanExtra::style_panelset(
+  panel_tab_color_active = "#0051BA",
+  panel_tab_color_hover = "#d22",
+  panel_tab_font_family = "Roboto"
+)
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "files/p1/logo.png",
+  link_url = "https://github.com/mansuylab/shortRNA",
+  position = xaringanExtra::css_position(top = "1em", right = "1em")
+)
+```
+
+
+<br>
+
+# .orange[`shortRNA`: A flexible framework for the analysis of short RNA sequencing data]
+
+
+## 24<sup>th</sup> February, 2022
+
+## Deepak Kumar Tanwar
+
+### `r anicon::faa("envelope", animate="", colour = "#2395fb")` [.red1[dktanwar@hotmail.com]](mailto:dktanwar@hotmail.com)
+### `r anicon::faa("twitter", animate="", colour = "#00acee")` [.red1[@d_k_tanwar]](https://twitter.com/d_k_tanwar)
+
+
+---
+
+```{r child='p2.Rmd'}
+```
+
+---
+
+```{r child='p3.Rmd'}
+```
+
+---
+
+```{r child='p4.Rmd'}
+```
+
+---
+
+```{r child='p5.Rmd'}
+```
+
+---
+
+
+class: center, middle, hide_logo
+
+.eLarge[.blue[**Thank you for your attention!**]]

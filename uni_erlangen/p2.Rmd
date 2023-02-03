@@ -1,0 +1,115 @@
+---
+title: "shortRNA"
+output: 
+  xaringan::moon_reader:
+    seal: false
+    libs: libs
+    css: ["css/xaringan.css", "default", "default-fonts"]
+    nature:
+      ratio: '16:9'
+      beforeInit: ["addons/macros.js", "https://platform.twitter.com/widgets.js"]
+      highlightLines: true
+      highlightSpans: false
+      highlightStyle: github
+      countIncrementalSlides: false
+      countdown: false
+      slideNumberFormat: '%current%'
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+class: left,hide_logo
+
+background-image: url("files/4.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[What are short RNAs?]
+
+<div class="my-footer1" style="text-align: center;background-color:#FEE0D2;"> .blue[<b>Introduction</b>] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+.large[Short RNAs are **non-coding** RNA molecules that can **regulate gene expression** and they may serve as **novel biomarkers** and **therapeutic targets** for the majority of diseases.]
+
+--
+
+The length of short RNAs can range from 14 to 300 nucleotides.
+
+
+--
+
+- MicroRNA (**miRNA**): 18 - 24 nt
+
+- Small interfering RNA (**siRNA**): 21 - 27 nt
+
+- Small nucleolar RNA (**snoRNA**): 60 - 170 nt
+
+- Small nuclear RNA (**snRNA**/ **U-RNA**): 100 - 300 nt
+
+- Small temporal RNA (**stRNA**): 18 - 24 nt
+
+- tRNA-derived small RNA (**tsRNA**): tRNA halves (**tsRNA**: 28 - 36 nt) & tRNA fragments (**tRFs**: 14 - 22 nt)
+
+- Small rDNA-derived RNA (**srRNA**): 18 - 30 nt
+
+- Repeat-associated small interfering RNA (**rasiRNA**): 24 - 27 nt
+
+- Piwi-interacting RNA (**piRNA**): 26 - 31 nt: 
+_Only present in animals (germline cells)_
+
+
+---
+
+class: left,hide_logo
+
+## .center[Problems of existing tools]
+
+<div class="my-footer1" style="text-align: center;background-color:#FEE0D2;"> .blue[<b>Introduction</b>] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<br>
+
+--
+
+
+.Large[Tools do not consider relationship between features and reads]
+
+--
+
+.Large[Post-transcriptional modifications of tRNAs are not accounted for]
+
+???
+
+- hence, creating an unalignment problem
+
+--
+
+.Large[rRNAs are typically masked in the genome and their annotations are unavailable]
+
+???
+
+- hence, making it impossible to quantify
+
+--
+
+.Large[Short RNAs often overlap multiple features]
+
+???
+
+- which creates multimapping problem
+
+--
+
+<br>
+.content-box-red[
+.center[
+.LARGE[All issues could lead to .blue[<u>misassignment</u>] and .blue[<u>low-mappability</u>] of the sequenced data]
+]
+]

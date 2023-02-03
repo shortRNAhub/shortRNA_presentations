@@ -1,0 +1,222 @@
+---
+title: "shortRNA"
+output: 
+  xaringan::moon_reader:
+    seal: false
+    libs: libs
+    css: ["css/xaringan.css", "default", "default-fonts"]
+    nature:
+      ratio: '16:9'
+      beforeInit: ["addons/macros.js", "https://platform.twitter.com/widgets.js"]
+      highlightLines: true
+      highlightSpans: false
+      highlightStyle: github
+      countIncrementalSlides: false
+      countdown: false
+      slideNumberFormat: '%current%'
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+class: left,hide_logo
+
+background-image: url("files/22.png")
+background-size: 80%
+background-position: 50% 75%
+
+## .center[Reads simulation for testing reads assignment]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Results</b>] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:250px;" alt="" height="252" width="680">
+
+???
+
+- to do so, we simulated reads from miRNA and precursor
+
+- different lengths
+
+- with known 2 miRNA seqs
+
+---
+
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/22.png")
+background-size: 80%
+background-position: 50% 75%
+
+## .center[.blue[shortRNA] perform proper read assignment]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Results</b>] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+???
+
+- after assignment, looking at this genomic track
+
+- observed a proper assigment of reads
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/23.png")
+background-size: 95%
+background-position: 50% 65%
+
+## .center[Differential analysis on simulated miRNA clusters]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Results</b>] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<img src="files/white.png" style="position:absolute;BOTTOM:45px; LEFT:650px;" alt="" height="110" width="680">
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+.brown[Huang _et. al. Genome Biology_ (2021)]
+
+???
+
+- this bring me to the last part of the pipeline: normalization and diff exp
+
+- as quantifications were performed on heirarchical manner
+
+- used treeClimbR
+
+- compute statistics at level of leaves of the tree and each level of the branches
+
+- Heatmap of simulated reads
+
+- groups were simulated to have differential expression
+
+- miR 99b
+
+- cluster
+
+---
+
+class: left,hide_logo
+
+## .center[Are shortRNA quantifications compared with other tools?]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Results</b>] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/24.png")
+background-size: 90%
+background-position: 50% 55%
+
+## .center[Are shortRNA quantifications compared with other tools?]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Results</b>] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+.center[.green[**Comparison of miRNA quantifications from shortRNA with three different tools**]]
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+.brown[Gapp <i>et. al. iScience</i> (2021)]: .blue[sperm short-RNA-seq data]
+
+???
+
+- used sperm short RNA seq data published recently
+
+- shortRNA quant with 3 diff tools: Oasis2, Sports1, and seqPAC (recently published)
+
+- better corralation with O2and S1, not with ...
+
+---
+
+class: left,hide_logo
+count: false
+
+## .center[How many common short RNAs were detected?]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Results</b>] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/01.png")
+background-size: 60%
+background-position: 50% 55%
+
+## .center[How many common short RNAs were detected?]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Results</b>] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+.brown[Gapp <i>et. al. iScience</i> (2021)]: .blue[sperm short-RNA-seq data]
+
+---
+
+class: left,hide_logo
+
+## .center[Were the quantifications validated in the lab?]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Results</b>] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/25.png")
+background-size: 90%
+background-position: 50% 55%
+
+## .center[Were the quantifications validated in the lab?]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Results</b>] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+.center[.green[**We compared quantifications from shortRNA and three other tools with qPCR data of five miRNAs**]]
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+.brown[Schratt Lab] [(schrattlab.ethz.ch)](schrattlab.ethz.ch): .blue[peripheral blood mononuclear cells (PBMCs) unpublished data from human]
+
+???
+
+- quant available from q PCR
+
+- analyzed data with 4 tools
+
+- high correlation with all tools, except for seqpac
+
+- Sports1 and seqpac do not use mature miRNAs, hence precursors quant is plotted

@@ -1,0 +1,87 @@
+---
+title: "shortRNA"
+output: 
+  xaringan::moon_reader:
+    seal: false
+    libs: libs
+    css: ["css/xaringan.css", "default", "default-fonts"]
+    nature:
+      ratio: '16:9'
+      beforeInit: ["addons/macros.js", "https://platform.twitter.com/widgets.js"]
+      highlightLines: true
+      highlightSpans: false
+      highlightStyle: github
+      countIncrementalSlides: false
+      countdown: false
+      slideNumberFormat: '%current%'
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+class: left,hide_logo
+
+## .center[Conclusions]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Counclusions</b>] </div>
+
+
+.large[<u>Flexible</u> <u>standalone</u> framework for short RNA-Seq analysis. (**Everything in `R`**)]
+
+--
+
+.large[Data preprocessing (QC, trimming, adapter detection) within R and extremely fast]
+
+--
+
+.large[Alignment also within R and extremely fast]
+
+--
+
+.large[`R` could be slow. Works with data structure which is faster to process with `R`]
+
+--
+
+.large[Optimized towards <u>all known short RNA</u> types (e.g. miRNA, piRNA, rasiRNA, siRNA, snoRNA, tsRNA, tRFs, srRNA and U-RNA)]
+
+--
+
+.large[Automatically processing of <u>features sequences and annotations</u>]
+
+--
+
+.large[Adequately deal with <u>post-transcriptional modifications</u>]
+
+--
+
+.large[Potentially detect <u>unannotated features</u>]
+
+--
+
+.large[Account for the <u>hierarchical organization</u> of the features]
+
+---
+
+
+## .center[Limitations]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Methods] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Counclusions</b>] </div>
+
+--
+
+.Large[<u>Simulations</u> for <u>other</u> types of <u>RNA</u> are necessary to benchmark the read assignment]
+
+--
+
+.Large[The <u>ambiguous assignment</u> of multi-mapping reads to the parent of all mappable features is not always <u>biologically meaningful</u>]
+
+--
+
+.Large[`shortRNA` is developed to work with <u>single-end</u> sRNA-seq data]

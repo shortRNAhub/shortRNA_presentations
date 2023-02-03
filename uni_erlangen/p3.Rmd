@@ -1,0 +1,654 @@
+---
+title: "shortRNA"
+output: 
+  xaringan::moon_reader:
+    seal: false
+    libs: libs
+    css: ["css/xaringan.css", "default", "default-fonts"]
+    nature:
+      ratio: '16:9'
+      beforeInit: ["addons/macros.js", "https://platform.twitter.com/widgets.js"]
+      highlightLines: true
+      highlightSpans: false
+      highlightStyle: github
+      countIncrementalSlides: false
+      countdown: false
+      slideNumberFormat: '%current%'
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+class: left,hide_logo
+
+background-image: url("files/13.png")
+background-size: 70%
+background-position: 50% 75%
+
+## .center[.blue[shortRNA]: a flexible framework for the analysis of short RNA sequencing data]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+???
+
+- done together with
+
+- we developed an R package, which is platform independent and this is the pipeline of the shortRNA
+
+- I will walk you through this pipeline in the next slides
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/14.png")
+background-size: 90%
+background-position: 50% 75%
+
+## .center[Count matrix of unique sequences from data]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:700px;" alt="" height="335" width="450">
+
+???
+
+- after receiving sequenced data
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/14.png")
+background-size: 90%
+background-position: 50% 75%
+
+## .center[Count matrix of unique sequences from data]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+???
+
+- sequence by count
+
+- uniques sequence --> alignment
+
+- count matrix for the normalization and differential analysis
+
+---
+
+class: left,hide_logo
+
+## .center[Problems of existing tools]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+<br>
+
+.Large[.blue[**Tools do not consider relationship between features and reads**]]
+
+.Large[Post-transcriptional modifications of tRNAs are not accounted for]
+
+.Large[rRNAs are typically masked in the genome and their annotations are unavailable]
+
+.Large[Short RNAs often overlap multiple features]
+
+<br>
+.content-box-red[
+.center[
+.LARGE[All issues could lead to .blue[<u>misassignment</u>] and .blue[<u>low-mappability</u>] of the sequenced data]
+]
+]
+
+???
+
+- Looking at the first problem of considering relationship between features and reads
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/15.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[Hierarchical structure stores unique sequences mapping to the same feature]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:650px;" alt="" height="102" width="290">
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:650px;" alt="" height="177" width="67">
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:710px;" alt="" height="110" width="35">
+
+???
+
+- arrange features in the tree format, depicted in panel C
+
+- first dividing the root by short and long RNAs
+
+- Next by biotypes
+
+- Further grouping by features and their unique sequences
+
+- taking an example in panel A
+
+- 2nd is shorter by 1 nucleotide
+
+- and both can be mapped to 1 feature, shown in panel B
+
+- we keep both the sequences for this feature in the tree, saving the sequence integrity
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/15.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[Database can be extended by adding a branch to the tree]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+???
+
+- it is also easy to expand the tree, for example
+
+- vault RNAs, 88 and 140 long, evolutionarily conserved and their functions are not clear
+
+---
+
+## .center[Hierarchical organization of miRNAs]
+
+### miRNA clusters
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+- set of two or more miRNAs, which are transcribed from physically adjacent miRNA genes
+
+--
+
+- Mostly 2-3 miRNAs per cluster
+
+--
+
+- miR-17to miR-92 cluster is found on human chromosome 13
+
+--
+
+- Distance between miRNAs:
+
+   - **10kb:** [Griffiths-Jones <i>et. al.</i>; Nucleic Acids Res.; 2008](https://doi.org/10.1093/nar/gkm952)
+   - **10kb:** [Baumgart & Barth <i>et. al.</i>; BMC Genomics 2917](https://doi.org/10.1186/s12864-017-3951-8)
+   - **50kb:** [Yuan <i>et. al.</i>; BMC Systems Biology; 2009](https://doi.org/10.1186/1752-0509-3-65)
+
+--
+
+**.green[We choose **10kb**] because:**
+   - miRBase authors used this
+   - "more than 40% of experimentally validated human miRNA cluster genes have been identified within 10kb"
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/33.png")
+background-size: 75%
+background-position: 50% 75%
+
+## .center[Hierarchical organization of miRNAs]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+???
+
+- miRNAs act together in cluster
+
+- we cluster if miRNA are within 10kb distance on the same strand
+
+- store relationship between cluster, miRNA precursor, and mature miRNAs
+
+---
+
+## .center[Problems of existing tools]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<br>
+
+.Large[<span>&#9989;</span> Tools do not consider relationship between features and reads]
+
+.Large[.blue[**Post-transcriptional modifications of tRNAs are not accounted for**]]
+
+.Large[rRNAs are typically masked in the genome and their annotations are unavailable]
+
+.Large[Short RNAs often overlap multiple features]
+
+<br>
+.content-box-red[
+.center[
+.LARGE[All issues could lead to .blue[<u>misassignment</u>] and .blue[<u>low-mappability</u>] of the sequenced data]
+]
+]
+
+???
+
+- address 1st problem
+
+- next problem is about tRNA post-transcritional modifications
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/16.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[Custom genome for alignment to account for post-transcriptional modifications of tRNA]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:650px;" alt="" height="192" width="490">
+
+
+<br><br><br><br><br><br><br><br><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+.brown[Barraud and Tisné. _IUBMB Life_ (2019)]
+
+???
+
+- receive CCA
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/16.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[Custom genome for alignment to account for post-transcriptional modifications of tRNA]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:650px;" alt="" height="132" width="490">
+
+
+<br><br><br><br><br><br><br><br><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+.brown[Barraud and Tisné. _IUBMB Life_ (2019)]
+
+???
+
+- also, histidine tRNA receive G
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/16.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[Custom genome for alignment to account for post-transcriptional modifications of tRNA]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+<br><br><br><br><br><br><br><br><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+.brown[Barraud and Tisné. _IUBMB Life_ (2019)]
+
+???
+
+- To solve this
+
+- we add CCA
+
+- G to histidine
+
+- add it as a custoim genome for alignment
+
+---
+
+## .center[Problems of existing tools]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<br>
+
+.Large[<span>&#9989;</span> Tools do not consider relationship between features and reads]
+
+.Large[<span>&#9989;</span> Post-transcriptional modifications of tRNAs are not accounted for]
+
+.Large[.blue[**rRNAs are typically masked in the genome and their annotations are unavailable**]]
+
+.Large[Short RNAs often overlap multiple features]
+
+<br>
+.content-box-red[
+.center[
+.LARGE[All issues could lead to .blue[<u>misassignment</u>] and .blue[<u>low-mappability</u>] of the sequenced data]
+]
+]
+
+???
+
+- coming towards to problem of rRNA unalignment
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/17.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[Custom genome for alignment to account for masked rRNA sequences]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:650px;" alt="" height="332" width="530">
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/17.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[Custom genome for alignment to account for masked rRNA sequences]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:650px;" alt="" height="202" width="530">
+
+???
+
+- when the rRNAs are masked ....
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/17.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[Custom genome for alignment to account for masked rRNA sequences]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+???
+
+- we add rRNA seqs as custom genome as well
+
+---
+
+## .center[Problems of existing tools]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+<br>
+
+.Large[<span>&#9989;</span> Tools do not consider relationship between features and reads]
+
+.Large[<span>&#9989;</span> Post-transcriptional modifications of tRNAs are not accounted for]
+
+.Large[<span>&#9989;</span> rRNAs are typically masked in the genome and their annotations are unavailable]
+
+.Large[.blue[**Short RNAs often overlap multiple features**]]
+
+<br>
+.content-box-red[
+.center[
+.LARGE[All issues could lead to .blue[<u>misassignment</u>] and .blue[<u>low-mappability</u>] of the sequenced data]
+]
+]
+
+???
+
+- this brings me to the last problem of multi-mapping
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/18.png")
+background-size: 95%
+background-position: 50% 75%
+
+## .center[Customisable reads assignment rules and dealing with multi-mapped reads in shortRNA]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+???
+
+- we solve this problem in 2 ways
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/19.png")
+background-size: 85%
+background-position: 50% 75%
+
+## .center[Proper assignment via customisable assignment rules]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:650px;" alt="" height="542" width="530">
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/19.png")
+background-size: 85%
+background-position: 50% 75%
+
+## .center[Proper assignment via customisable assignment rules]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<br><br><br><br><br><br><br><br><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+.brown[Brennecke _et. al. Cell_ (2007)]
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/20.png")
+background-size: 85%
+background-position: 50% 77%
+
+## .center[Proper assignment via customisable assignment rules]
+
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+???
+
+- In shortRNA, we also priortize by the biotypes
+
+- example of miRNA seq
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/21.png")
+background-size: 95%
+background-position: 50% 60%
+
+## .center[Assigning the read as ambiguous to the parent of all mappable features]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+
+<img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:650px;" alt="" height="542" width="530">
+
+???
+
+- Looking at the second way
+
+- seq mapping to 8 tRNAs perfectly
+
+- if assigned randomly to 1, as done by most of the pipelines, integrity of seq is lost
+
+- if assigned to all, we have a multi-mapping problem
+
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/21.png")
+background-size: 95%
+background-position: 50% 60%
+
+## .center[Assigning the read as ambiguous to the parent of all mappable features]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+???
+
+- To solve this issue, we assign it to parent of all mappable features
+
+---
+
+## .center[Problems of existing tools]
+
+<div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"> .grey[Introduction] </div>
+<div class="my-footer2" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"> .blue[<b>Methods</b>] </div>
+<div class="my-footer3" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Results] </div>
+<div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"> .grey[Counclusions] </div>
+
+<br>
+
+.Large[<span>&#9989;</span> Tools do not consider relationship between features and reads]
+
+.Large[<span>&#9989;</span> Post-transcriptional modifications of tRNAs are not accounted for]
+
+.Large[<span>&#9989;</span> rRNAs are typically masked in the genome and their annotations are unavailable]
+
+.Large[<span>&#9989;</span> Short RNAs often overlap multiple features]
+
+<br>
+.content-box-green[
+.center[
+.LARGE[Resolved issues help in .blue[<u>**proper assignment**</u>] and .blue[<u>**high mappability**</u>] of the sequenced data.]
+]
+]
+
+???
+
+- Hence, we addressed all the problems
+
+- this our tool promote better assignment and high-mappability
+
+- However, we have not yest tested the assignment by shortRNA
