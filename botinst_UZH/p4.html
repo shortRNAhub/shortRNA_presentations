@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>shortRNA</title>
+    <meta charset="utf-8" />
+    <script src="p4_files/header-attrs-2.20/header-attrs.js"></script>
+    <link href="p4_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="p4_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/xaringan.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: left,hide_logo
+
+background-image: url("files/22.png")
+background-size: 80%
+background-position: 50% 75%
+
+## .center[Reads simulation for testing reads assignment]
+
+&lt;div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"&gt; .grey[Introduction] &lt;/div&gt;
+&lt;div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Methods] &lt;/div&gt;
+&lt;div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"&gt; .blue[&lt;b&gt;Results&lt;/b&gt;] &lt;/div&gt;
+&lt;div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Counclusions] &lt;/div&gt;
+
+&lt;img src="files/white.png" style="position:absolute;BOTTOM:25px; LEFT:250px;" alt="" height="252" width="680"&gt;
+
+???
+
+- to do so, we simulated reads from miRNA and precursor
+
+- different lengths
+
+- with known 2 miRNA seqs
+
+---
+
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/22.png")
+background-size: 80%
+background-position: 50% 75%
+
+## .center[.blue[shortRNA] perform proper read assignment]
+
+&lt;div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"&gt; .grey[Introduction] &lt;/div&gt;
+&lt;div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Methods] &lt;/div&gt;
+&lt;div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"&gt; .blue[&lt;b&gt;Results&lt;/b&gt;] &lt;/div&gt;
+&lt;div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Counclusions] &lt;/div&gt;
+
+???
+
+- after assignment, looking at this genomic track
+
+- observed a proper assigment of reads
+
+---
+
+class: left,hide_logo
+
+background-image: url("files/23.png")
+background-size: 95%
+background-position: 50% 65%
+
+## .center[Differential analysis on simulated miRNA clusters]
+
+&lt;div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"&gt; .grey[Introduction] &lt;/div&gt;
+&lt;div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Methods] &lt;/div&gt;
+&lt;div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"&gt; .blue[&lt;b&gt;Results&lt;/b&gt;] &lt;/div&gt;
+&lt;div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Counclusions] &lt;/div&gt;
+
+&lt;img src="files/white.png" style="position:absolute;BOTTOM:45px; LEFT:650px;" alt="" height="110" width="680"&gt;
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
+.brown[Huang _et. al. Genome Biology_ (2021)]
+
+???
+
+- this bring me to the last part of the pipeline: normalization and diff exp
+
+- as quantifications were performed on heirarchical manner
+
+- used treeClimbR
+
+- compute statistics at level of leaves of the tree and each level of the branches
+
+- Heatmap of simulated reads
+
+- groups were simulated to have differential expression
+
+- miR 99b
+
+- cluster
+
+---
+
+class: left,hide_logo
+
+## .center[Are shortRNA quantifications compared with other tools?]
+
+&lt;div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"&gt; .grey[Introduction] &lt;/div&gt;
+&lt;div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Methods] &lt;/div&gt;
+&lt;div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"&gt; .blue[&lt;b&gt;Results&lt;/b&gt;] &lt;/div&gt;
+&lt;div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Counclusions] &lt;/div&gt;
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/24.png")
+background-size: 90%
+background-position: 50% 55%
+
+## .center[Are shortRNA quantifications compared with other tools?]
+
+&lt;div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"&gt; .grey[Introduction] &lt;/div&gt;
+&lt;div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Methods] &lt;/div&gt;
+&lt;div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"&gt; .blue[&lt;b&gt;Results&lt;/b&gt;] &lt;/div&gt;
+&lt;div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Counclusions] &lt;/div&gt;
+
+.center[.green[**Comparison of miRNA quantifications from shortRNA with three different tools**]]
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.brown[Gapp &lt;i&gt;et. al. iScience&lt;/i&gt; (2021)]: .blue[sperm short-RNA-seq data]
+
+???
+
+- used sperm short RNA seq data published recently
+
+- shortRNA quant with 3 diff tools: Oasis2, Sports1, and seqPAC (recently published)
+
+- better corralation with O2and S1, not with ...
+
+---
+
+class: left,hide_logo
+count: false
+
+## .center[How many common short RNAs were detected?]
+
+&lt;div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"&gt; .grey[Introduction] &lt;/div&gt;
+&lt;div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Methods] &lt;/div&gt;
+&lt;div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"&gt; .blue[&lt;b&gt;Results&lt;/b&gt;] &lt;/div&gt;
+&lt;div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Counclusions] &lt;/div&gt;
+
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/01.png")
+background-size: 60%
+background-position: 50% 55%
+
+## .center[How many common short RNAs were detected?]
+
+&lt;div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"&gt; .grey[Introduction] &lt;/div&gt;
+&lt;div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Methods] &lt;/div&gt;
+&lt;div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"&gt; .blue[&lt;b&gt;Results&lt;/b&gt;] &lt;/div&gt;
+&lt;div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Counclusions] &lt;/div&gt;
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.brown[Gapp &lt;i&gt;et. al. iScience&lt;/i&gt; (2021)]: .blue[sperm short-RNA-seq data]
+
+---
+
+class: left,hide_logo
+
+## .center[Were the quantifications validated in the lab?]
+
+&lt;div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"&gt; .grey[Introduction] &lt;/div&gt;
+&lt;div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Methods] &lt;/div&gt;
+&lt;div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"&gt; .blue[&lt;b&gt;Results&lt;/b&gt;] &lt;/div&gt;
+&lt;div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Counclusions] &lt;/div&gt;
+
+---
+
+class: left,hide_logo
+count: false
+
+background-image: url("files/25.png")
+background-size: 90%
+background-position: 50% 55%
+
+## .center[Were the quantifications validated in the lab?]
+
+&lt;div class="my-footer1" style="text-align: center;background-color:#D9D9D9;"&gt; .grey[Introduction] &lt;/div&gt;
+&lt;div class="my-footer2" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Methods] &lt;/div&gt;
+&lt;div class="my-footer3" style="text-align: center;background-color:#FEE0D2;border-left:1px solid black;"&gt; .blue[&lt;b&gt;Results&lt;/b&gt;] &lt;/div&gt;
+&lt;div class="my-footer4" style="text-align: center;background-color:#D9D9D9;border-left:1px solid black;"&gt; .grey[Counclusions] &lt;/div&gt;
+
+
+.center[.green[**We compared quantifications from shortRNA and three other tools with qPCR data of five miRNAs**]]
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.brown[Schratt Lab] [(schrattlab.ethz.ch)](schrattlab.ethz.ch): .blue[peripheral blood mononuclear cells (PBMCs) unpublished data from human]
+
+???
+
+- quant available from q PCR
+
+- analyzed data with 4 tools
+
+- high correlation with all tools, except for seqpac
+
+- Sports1 and seqpac do not use mature miRNAs, hence precursors quant is plotted
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="addons/macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightLines": true,
+"highlightSpans": false,
+"highlightStyle": "github",
+"countIncrementalSlides": false,
+"slideNumberFormat": "%current%",
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
